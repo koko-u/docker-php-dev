@@ -3,6 +3,17 @@ FROM php:8.1.6-cli-bullseye
 # required extensions for laravel
 RUN docker-php-ext-install bcmath pdo pdo_mysql
 
+# gpg
+RUN set -ex; \
+    if ! command -v gpg > /dev/null; then \
+    apt-get update; \
+    apt-get install -y --no-install-recommends \
+    gnupg \
+    dirmngr \
+    ; \
+    rm -rf /var/lib/apt/lists/*; \
+    fi
+
 # git
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
