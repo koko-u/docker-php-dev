@@ -195,4 +195,8 @@ RUN set -ex \
     # smoke test
     && yarn --version
 
+WORKDIR /usr/workspace
+
+COPY vscode.extensions .
+
 CMD [ "/bin/bash" ]
