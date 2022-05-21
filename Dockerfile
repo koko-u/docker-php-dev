@@ -197,6 +197,6 @@ RUN set -ex \
 
 WORKDIR /usr/workspace
 
-COPY vscode.extensions .
+COPY workspace.code-workspace .
 
 CMD [ "/bin/bash" ]
