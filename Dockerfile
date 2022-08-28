@@ -1,4 +1,4 @@
-FROM php:8.1.6-cli-bullseye
+FROM php:8.1.9-cli-bullseye
 
 # required extensions for laravel
 RUN docker-php-ext-install bcmath pdo pdo_mysql
@@ -72,7 +72,7 @@ RUN set -ex; \
 # composer
 ENV COMPOSER_ALLOW_SUPERUSER 1
 ENV COMPOSER_HOME /tmp
-ENV COMPOSER_VERSION 2.3.5
+ENV COMPOSER_VERSION 2.4.1
 
 RUN set -eux ; \
     # install https://github.com/mlocati/docker-php-extension-installer
@@ -133,7 +133,7 @@ RUN set -eux ; \
     find /tmp -type d -exec chmod -v 1777 {} +
 
 # node 16
-ENV NODE_VERSION 16.15.0
+ENV NODE_VERSION 16.17.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && case "${dpkgArch##*-}" in \
@@ -175,7 +175,7 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     && node --version \
     && npm --version
 
-ENV YARN_VERSION 1.22.18
+ENV YARN_VERSION 1.22.19
 
 RUN set -ex \
     && for key in \
@@ -197,6 +197,6 @@ RUN set -ex \
 
 WORKDIR /usr/workspace
 
-COPY workspace.code-workspace .
+COPY workspace.code-workspace /root/
 
 CMD [ "/bin/bash" ]
